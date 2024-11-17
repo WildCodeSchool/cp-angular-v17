@@ -1,0 +1,119 @@
+<h1>Cupcake Union</h1>
+<div class="instructions">
+  <h2>🍪 Step 1 - Get the cupcakes</h2>
+  <p>
+    You started a json server when running <code>npm start</code>. You can check
+    the API available at
+    <a href="http://localhost:4000" target="_blank">localhost:4000</a>.
+    <br />
+    Your first mission is to get the cupcakes from the API.
+    <br />
+    Add an instance of HttpClient in the
+    <code>api-service</code> (<code>src/app/shared/api-service</code>) and fetch
+    the
+    <a href="http://localhost:4000/cupcakes" target="_blank"
+      >localhost:4000/cupcakes</a
+    >
+    endpoint.
+    <br />
+    In the <code>CupcakeList</code> component
+    (<code>src/app/pages/cupcake-list</code>), use the service in order to
+    assign the result of the http request to the attribute
+    <code>cupcakes</code>.
+  </p>
+  <details>
+    <summary>Hint</summary>
+    You have to create a class or an interface to describe and type a cupcake
+    object (<code>src/app/shared/cupcake.model.ts</code>).
+  </details>
+
+  <h2>🧁 Step 2 - Show all the cupcakes</h2>
+  <p>
+    In the <code>CupcakeList</code> component, use the appropriate directive and
+    map your cupcakes to display the list. You can use the
+    <code>Cupcake</code> component: pass the cupcake data through an Input
+    <code>cupcake</code>
+    <br />
+  </p>
+
+  <h2>🍪 Step 3 - Get the accessories</h2>
+  <p>
+    For this step, get the accessory list from the API.
+    <br />
+    As below, add an instance of HttpClient in the <code>api-service</code> and
+    fetch the
+    <a href="http://localhost:4000/accessories" target="_blank"
+      >localhost:4000/accessories</a
+    >
+    endpoint.
+    <br />
+    In the <code>CupcakeList</code> component (
+    <code>src/app/pages/cupcake-list</code>), use the service in order to assign
+    the result of the http request.
+  </p>
+  <details>
+    <summary>Hint</summary>
+    You will need an other attribute, <code>accessories</code>, to store the
+    result. Don't forget to create your model...
+  </details>
+
+  <h2>🧁 Step 4 - Fill the accessories selector</h2>
+  <p>
+    The <code>select</code> in <code>CupcakeList</code> only contains an empty
+    option.
+    <br />
+    Fill the list with one option per accessory.
+  </p>
+  <details>
+    <summary>Hint</summary>
+    Map your accessories to produce the options. You should end up with
+    something like that:
+    <code>
+      <pre>
+        <select id="cupcake-select">
+          <option value="">---</option>
+          <option value="1">Cherry</option>
+          <option value="2">Donut</option>
+          <option value="3">Chocolate</option>
+          <option value="4">Wild</option>
+          <option value="5">Christmas Candy</option>
+        </select>
+      </pre>
+    </code>
+  </details>
+
+  <h2>🧁 Step 5 - Filter the list</h2>
+  <p>
+    When the selected accessory changes, filter the cupcake list before mapping.
+    <br />
+    Note that when no accessories are selected, your filter should keep the
+    whole list.
+  </p>
+  <details>
+    <summary>Hint</summary>
+    You will need a last property to store the selected accessory (initialized
+    with an empty string). Bind it with the
+    <code>select</code> using <code>[(ngModel)]</code> and
+    <code>(change)</code> event.
+  </details>
+
+  <h2>⭐ Bonus - Create a whole page</h2>
+  <p>
+    Create a <code>CupcakeDetails</code> page. Add a route to display this page
+    with the path <code>/cupcakes/:id</code>.
+    <br />
+    You should wrap each cupcake in <code>CupcakeList</code> with a
+    <code>RouterLink</code> towards the <code>CupcakeDetails</code>
+    page.
+    <br />
+    In the page, get the cupcake from the id and display it.
+  </p>
+  <details>
+    <summary>Hint</summary>
+    Use the appropriate endpoint :
+    <a href="http://localhost:4000/cupcakes/1" target="_blank"
+      >localhost:4000/cupcakes/:id</a
+    >.
+  </details>
+</div>
+
