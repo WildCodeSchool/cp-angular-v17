@@ -17,7 +17,6 @@ export class CupcakeListComponent {
     // Create attributs in order to get datas
     public cupcakes: Cupcake[] = [];
     public accessories: Accessory[] =[];
-    public selectedAccessory: string = '';
     public filteredCupcakes : Cupcake[] =[];
 
 

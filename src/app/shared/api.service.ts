@@ -1,7 +1,7 @@
+import { Cupcake } from './../models/cupcake.model';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cupcake } from '../models/cupcake.model';
 import { Accessory } from '../models/accessories.model';
 
 @Injectable({
@@ -20,5 +20,9 @@ export class ApiService {
 
   getAccessories(): Observable<Accessory[]>{
     return this.http.get<Accessory[]>(`${this.baseUrl}/accessories`)
+  }
+
+  getCupcakeById(cupcakeId: number): Observable<Cupcake>{
+    return this.http.get<Cupcake>(`${this.baseUrl}/cupcakes/${cupcakeId}`)
   }
 }
