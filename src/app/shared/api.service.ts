@@ -12,7 +12,6 @@ export class ApiService {
   private http: HttpClient = inject(HttpClient);
 
   getCupcakes() {
-    return this.http.get<Cupcake>(`${this.apiUrl}`);
+    return this.http.get<Cupcake[]>(`${this.apiUrl}`);
   }
-
 }
