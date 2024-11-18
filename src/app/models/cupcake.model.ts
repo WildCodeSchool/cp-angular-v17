@@ -1,6 +1,6 @@
 // create a class or an interface
 export interface Cupcakes {
-  id: number;
+  id: string;
   accessory_id: string;
   url: string;
   color1: string;
