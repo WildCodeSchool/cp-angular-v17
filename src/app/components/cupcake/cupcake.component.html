@@ -1,4 +1,5 @@
 @if (cupcake) {
+  <a [routerLink]="['/cupcake', cupcake.id]">
   <div class="cupcake-container">
     <div class="cupcake">
       <img [src]="cupcake.url" alt="accessory" />
@@ -31,6 +32,7 @@
   
     <div class="cupcake-name">{{ cupcake.name }}</div>
   </div>
+</a>
 }
 
 

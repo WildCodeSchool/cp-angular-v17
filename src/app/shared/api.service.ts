@@ -18,4 +18,8 @@ export class ApiService {
   getAccessories(){
     return this.http.get<Accessory[]>(`${this.cupcakeUrl}/accessories`)
   }
+
+  getCupcakeById(id:number){
+    return this.http.get<Cupcake>(`${this.cupcakeUrl}/cupcakes/${id}`)
+  }
 }
