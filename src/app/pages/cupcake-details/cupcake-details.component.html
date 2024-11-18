@@ -1,0 +1,7 @@
+<h1>My cupcake details</h1>
+
+@if (cupcake$ | async) {
+<p>{{ (cupcake$ | async)?.id }}</p>
+} @else {
+<p>Loading details...</p>
+}
