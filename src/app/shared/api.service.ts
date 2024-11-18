@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cupcakes } from '../models/cupcake.model';
-import { Accessories } from '../models/accessories.model';
+import { Cupcake } from '../models/cupcake.model';
+import { Accessory } from '../models/accessories.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,11 @@ export class ApiService {
   private http : HttpClient = inject(HttpClient);
   constructor() { }
 
-  getCupcakes (): Observable<Cupcakes[]>{
-    return this.http.get<Cupcakes[]>(`${this.baseUrl}/cupcakes`)
+  getCupcakes (): Observable<Cupcake[]>{
+    return this.http.get<Cupcake[]>(`${this.baseUrl}/cupcakes`)
   }
 
-  getAccessories(): Observable<Accessories[]>{
-    return this.http.get<Accessories[]>(`${this.baseUrl}/accessories`)
+  getAccessories(): Observable<Accessory[]>{
+    return this.http.get<Accessory[]>(`${this.baseUrl}/accessories`)
   }
 }

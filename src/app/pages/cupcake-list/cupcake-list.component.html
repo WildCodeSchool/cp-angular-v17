@@ -1,15 +1,16 @@
 <h1>My cupcakes</h1>
-<form class="center">
+<form class="center" #filterForm="ngForm">
   <label htmlFor="cupcake-select">
     Filter by
     <select
       id="cupcake-select"
       name="cupcake-select"
+      (change)="filterCupcakesByAccessory($event)"
     >
     <option value="">---</option>
     @for(accessory of accessories; track accessory.id){
       <!-- * Step 4: add an option for each accessory * -->
-      <option value={{accessory.id}}>{{accessory.name}}</option>
+      <option value={{accessory.id}} >{{accessory.name}}</option>
     }
     </select>
   </label>
@@ -17,7 +18,7 @@
 
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-  @for (cupcake of cupcakes; track cupcake.id) {
+  @for (cupcake of filteredCupcakes; track cupcake.id) {
   <li class="cupcake-item">
     <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
