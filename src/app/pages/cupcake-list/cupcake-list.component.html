@@ -6,8 +6,12 @@
       id="cupcake-select"
       name="cupcake-select"
     >
-      <option value="">---</option>
-      <!-- * Step 4: add an option for each accessory * -->
+    @for (accessory of accessories$ | async; track $index) {
+      <option value="">
+        <!-- * Step 4: add an option for each accessory * -->
+          {{ accessory.name }}
+      </option>
+    }
     </select>
   </label>
 </form>
