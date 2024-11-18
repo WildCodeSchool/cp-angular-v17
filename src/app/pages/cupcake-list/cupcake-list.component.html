@@ -8,14 +8,22 @@
     </select>
   </label>
 </form>
+
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-
-  @for (cupcake of (cupcakes$ | async); track $index) {
+  @for (cupcake of cupcakes$ | async; track cupcake.id) {
   <li class="cupcake-item">
-    <app-cupcake [cupcake]="cupcakes$"></app-cupcake>
+    <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
   } @empty {
   <p>No cupcakes available.</p>
   }
 </ul>
+
+@for (accessory of accessories$ | async; track accessory.id) {
+
+<img [src]="accessory.url" alt="{{ accessory.name }}" />
+<p>{{ accessory.name }}</p>
+} @empty {
+<p>No accessories available.</p>
+}

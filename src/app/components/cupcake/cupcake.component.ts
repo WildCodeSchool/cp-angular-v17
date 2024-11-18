@@ -16,6 +16,4 @@ export class CupcakeComponent {
     color3: 'var(--default-cream-color)',
     name: '',
   };
-
-  @Input() parentMessage: string = '';
 }
