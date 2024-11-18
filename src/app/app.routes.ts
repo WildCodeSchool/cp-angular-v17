@@ -5,15 +5,15 @@ import { InstructionsComponent } from './pages/instructions/instructions.compone
 
 export const routes: Routes = [
   {
-    path: "",
-    component: HomeComponent
-  },
-  {
-    path: "cupcakes",
+    path: 'cupcakes',
     component: CupcakeListComponent
   },
   {
-    path: "instructions",
+    path: 'instructions',
     component: InstructionsComponent
+  },
+  {
+    path: '',
+    component: HomeComponent
   },
 ];
