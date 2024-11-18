@@ -11,8 +11,8 @@ import { Cupcake } from '../../models/cupcake.model';
 })
 export class CupcakeComponent {
   @Input() cupcake: Cupcake = {
-    id: 0,
-    accessory_id: 0,
+    id: '',
+    accessory_id: '',
     url: '',
     color1: '',
     color2: '',

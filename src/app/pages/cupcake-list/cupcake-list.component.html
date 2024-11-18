@@ -5,15 +5,20 @@
     <select
       id="cupcake-select"
       name="cupcake-select"
+      [(ngModel)]="selectedAccessory"
+      (change)="selectAccessory()"
     >
       <option value="">---</option>
       <!-- * Step 4: add an option for each accessory * -->
+      @for (accessory of accessories; track $index) {
+        <option value="{{accessory.id}}">{{ accessory.name }}</option>
+      }
     </select>
   </label>
 </form>
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-  @for (cupcake of cupcakes; track $index) {
+  @for (cupcake of selectedCupcakes; track $index) {
     <li class="cupcake-item">
       <app-cupcake [cupcake]="cupcake"></app-cupcake>
     </li>
