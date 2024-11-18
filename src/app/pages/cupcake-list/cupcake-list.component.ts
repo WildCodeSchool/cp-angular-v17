@@ -23,7 +23,6 @@ export class CupcakeListComponent {
 
   ngOnInit() {
     this.cupcakes$ = this.apiService.getCupcakes();
-    console.log(this.apiService.getCupcakes());
   }
 
   // Step 3: get all accessories
