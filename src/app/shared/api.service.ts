@@ -8,8 +8,9 @@ import { Accessory } from '../models/accessories.model';
 })
 export class ApiService {
   http = inject(HttpClient);
-  apiRootUrl = 'http://localhost:4000';
+  baseUrl = 'http://localhost:4000';
 
+  private cupcakeSignal = signal<Cupcake | undefined>(undefined);
   private cupcakesSignal = signal<Cupcake[]>([]);
   private accessoriesSignal = signal<Accessory[]>([]);
   private selectedAccessoryIdSignal = signal<string>('');
@@ -28,19 +29,32 @@ export class ApiService {
     return this.accessoriesSignal;
   }
 
+  get cupcake() {
+    return this.cupcakeSignal;
+  }
+
   setAccessory(accessory: string) {
     this.selectedAccessoryIdSignal.set(accessory);
   }
 
+  fetchCupcakeById(id: string) {
+    const url = `${this.baseUrl}/cupcakes/${id}`;
+    console.log(url);
+    return this.http.get<Cupcake>(url).subscribe({
+      next: (data) => this.cupcake.set(data),
+      error: (error) => console.error('Error on fetching cupcake by id', error),
+    });
+  }
+
   fetchCupcakes(): void {
-    this.http.get<Cupcake[]>(`${this.apiRootUrl}/cupcakes`).subscribe({
+    this.http.get<Cupcake[]>(`${this.baseUrl}/cupcakes`).subscribe({
       next: (data) => this.cupcakesSignal.set(data),
       error: (error) => console.error('Error on fetching cupcakes', error),
     });
   }
 
   fetchAccessories() {
-    this.http.get<Accessory[]>(`${this.apiRootUrl}/accessories`).subscribe({
+    this.http.get<Accessory[]>(`${this.baseUrl}/accessories`).subscribe({
       next: (data) => this.accessoriesSignal.set(data),
       error: (error) => console.error('Error on fetching accessories', error),
     });

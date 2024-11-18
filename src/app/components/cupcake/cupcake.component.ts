@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Cupcake } from '../../models/cupcake.model';
 
 @Component({
@@ -9,14 +9,6 @@ import { Cupcake } from '../../models/cupcake.model';
   templateUrl: './cupcake.component.html',
   styleUrl: './cupcake.component.css',
 })
-export class CupcakeComponent implements OnInit {
+export class CupcakeComponent {
   cupcake = input.required<Cupcake>();
-
-  ngOnInit(): void {
-    if (this.cupcake()?.id) {
-      console.log('Cupcake init');
-    } else {
-      console.log('Cupcake not init');
-    }
-  }
 }

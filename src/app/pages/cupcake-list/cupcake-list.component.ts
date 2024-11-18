@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CupcakeComponent } from '../../components/cupcake/cupcake.component';
 import { ApiService } from '../../shared/api.service';
-import { Accessory } from '../../models/accessories.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cupcake-list',
@@ -12,6 +12,7 @@ import { Accessory } from '../../models/accessories.model';
 })
 export class CupcakeListComponent implements OnInit {
   ApiService = inject(ApiService);
+  router = inject(Router);
 
   cupcakes = this.ApiService.cupcakes;
   accessories = this.ApiService.accessories;
@@ -23,5 +24,9 @@ export class CupcakeListComponent implements OnInit {
 
   onAccessoryChange(accessoryId: string) {
     this.ApiService.setAccessory(accessoryId);
+  }
+
+  goToCupcake(cupcakeId: string) {
+    this.router.navigate(['/cupcake', cupcakeId]);
   }
 }

@@ -15,11 +15,11 @@
     </select>
   </label>
 </form>
-@if (ApiService.cupcakes(); as cupcakes) {
+@if (cupcakes(); as cupcakes) {
   <ul class="cupcake-list" id="cupcake-list">
     <!-- * Step 2: repeat this block for each cupcake * -->
     @for (cupcake of cupcakes; track cupcake.id) {
-      <li class="cupcake-item">
+      <li class="cupcake-item" (click)="goToCupcake(cupcake.id)">
         @if (cupcake; as Cupcake) {
           <app-cupcake [cupcake]="cupcake"></app-cupcake>
         }
