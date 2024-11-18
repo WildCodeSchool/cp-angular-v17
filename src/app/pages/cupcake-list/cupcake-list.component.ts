@@ -12,10 +12,8 @@ import { ApiService } from '../../shared/api.service';
 export class CupcakeListComponent implements OnInit {
   ApiService = inject(ApiService);
 
-  // Step 1: get all cupcakes
   ngOnInit(): void {
     this.ApiService.fetchCupcakes();
+    this.ApiService.fetchAccessories();
   }
-
-  // Step 3: get all accessories
 }
