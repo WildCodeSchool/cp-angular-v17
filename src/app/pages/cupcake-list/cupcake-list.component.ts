@@ -15,7 +15,6 @@ export class CupcakeListComponent implements OnInit {
   // Step 1: get all cupcakes
   ngOnInit(): void {
     this.ApiService.fetchCupcakes();
-    console.log(this.ApiService.cupcakes());
   }
 
   // Step 3: get all accessories

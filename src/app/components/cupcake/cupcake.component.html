@@ -1,19 +1,19 @@
-@if (cupcake) {
+@if (cupcake()) {
   <div class="cupcake-container">
     <div class="cupcake">
-      <img [src]="cupcake.url" alt="accessory" />
+      <img [src]="cupcake().url" alt="accessory" />
       <div class="cream">
         <div
           class="cream-1"
-          [ngStyle]="{ backgroundColor: cupcake.color1 }"
+          [ngStyle]="{ backgroundColor: cupcake().color1 }"
         ></div>
         <div
           class="cream-2"
-          [ngStyle]="{ backgroundColor: cupcake.color2 }"
+          [ngStyle]="{ backgroundColor: cupcake().color2 }"
         ></div>
         <div
           class="cream-3"
-          [ngStyle]="{ backgroundColor: cupcake.color3 }"
+          [ngStyle]="{ backgroundColor: cupcake().color3 }"
         ></div>
       </div>
       <div class="bottom">
@@ -28,9 +28,9 @@
         </div>
       </div>
     </div>
-  
-    <div class="cupcake-name">{{ cupcake.name }}</div>
+
+    <div class="cupcake-name">{{ cupcake().name }}</div>
   </div>
+} @else {
+  <div>No cupcake</div>
 }
-
-
