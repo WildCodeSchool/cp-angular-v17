@@ -1,5 +1,6 @@
 @if (cupcake) {
-  <div class="cupcake-container">
+<a routerLink="/cupcake/{{ cupcake.id }}"
+  ><div class="cupcake-container">
     <div class="cupcake">
       <img [src]="cupcake.url" alt="accessory" />
       <div class="cream">
@@ -28,9 +29,7 @@
         </div>
       </div>
     </div>
-  
     <div class="cupcake-name">{{ cupcake.name }}</div>
-  </div>
+  </div></a
+>
 }
-
-
