@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CupcakeListComponent {
   accessoryFilter = "";
-  cupcakeService=inject(ApiService);
+  cupcakeService = inject(ApiService);
   cupcakes:Cupcake[] = [];
   accessories:Accessory[] = [];
   ngOnInit(){

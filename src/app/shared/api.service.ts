@@ -12,11 +12,11 @@ export class ApiService {
   private baseUrl = 'http://localhost:4000';
   constructor(private http: HttpClient) { };
 
-  getCupCakes():Observable<any>{
-    return this.http.get(`${this.baseUrl}/cupcakes`)
+  getCupCakes():Observable<Cupcake[]>{
+    return this.http.get<Cupcake[]>(`${this.baseUrl}/cupcakes`)
   }
 
-  getAccessories():Observable<any>{
-    return this.http.get(`${this.baseUrl}/accessories`)
+  getAccessories():Observable<Accessory[]>{
+    return this.http.get<Accessory[]>(`${this.baseUrl}/accessories`)
   }
 }
