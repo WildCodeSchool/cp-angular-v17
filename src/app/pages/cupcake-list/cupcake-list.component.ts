@@ -38,6 +38,7 @@ export class CupcakeListComponent {
   ngOnInit() {
     this.apiService.getCupcakes().subscribe((cupcakes) => {
       console.log(cupcakes);
+      this.filteredCupcakes = cupcakes;
       this.cupcakes$ = this.apiService.getCupcakes();
     });
 
@@ -47,7 +48,17 @@ export class CupcakeListComponent {
     });
   }
 
-  accessoriesSelect(): void {}
-
+  filterCupcakesByAccessory() {
+    this.apiService.getCupcakes().subscribe((cupcakes) => {
+      if (this.selectedAccessories) {
+        this.filteredCupcakes = cupcakes.filter((cupcake) => {
+          console.log(cupcake.accessory_id);
+          return cupcake.accessory_id;
+        });
+      } else {
+        this.filteredCupcakes = cupcakes;
+      }
+    });
+  }
   // Step 3: get all  accessories
 }
