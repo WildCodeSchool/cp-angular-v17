@@ -1,5 +1,5 @@
 @if (cupcake) {
-  <div class="cupcake-container">
+  <div [routerLink]="['/cupcakes', cupcake.id]" class="cupcake-container">
     <div class="cupcake">
       <img [src]="cupcake.url" alt="accessory" />
       <div class="cream">
