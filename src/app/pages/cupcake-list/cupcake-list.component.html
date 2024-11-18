@@ -19,9 +19,11 @@
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
   @for (cupcake of selectedCupcakes; track $index) {
-    <li class="cupcake-item">
-      <app-cupcake [cupcake]="cupcake"></app-cupcake>
-    </li>
+    <a [routerLink]="['cupcakes', cupcake.id]">
+      <li class="cupcake-item">
+        <app-cupcake [cupcake]="cupcake"></app-cupcake>
+      </li>
+    </a>
   } @empty {
     <li>Aucun cupcake en stock</li>
   }
