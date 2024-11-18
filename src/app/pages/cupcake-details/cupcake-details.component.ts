@@ -31,11 +31,10 @@ export class CupcakeDetailsComponent implements OnInit, OnDestroy {
           this.cupcake = cupcake;
           this.isLoading = false;
         },
-        error: (error) => {
+        error: () => {
           this.hasError = true;
-          this.errorMessage = 'Failed to load cupcake details';
+          this.errorMessage = 'une erreur est survenue';
           this.isLoading = false;
-          console.error('Error loading cupcake details:', error);
         },
       });
   }

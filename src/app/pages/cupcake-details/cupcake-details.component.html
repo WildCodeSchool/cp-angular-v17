@@ -1,7 +1,7 @@
 @if(isLoading){
 <p>Loading...</p>
 } @if(hasError){
-<p>une erreur est survenu</p>
+<p>{{ errorMessage }}</p>
 } @if(!isLoading && !hasError && cupcake){
 <app-cupcake [cupcake]="cupcake"></app-cupcake>
 
