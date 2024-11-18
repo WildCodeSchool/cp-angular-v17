@@ -2,10 +2,7 @@
 <form class="center">
   <label htmlFor="cupcake-select">
     Filter by
-    <select
-      id="cupcake-select"
-      name="cupcake-select"
-    >
+    <select id="cupcake-select" name="cupcake-select">
       <option value="">---</option>
       <!-- * Step 4: add an option for each accessory * -->
     </select>
@@ -13,8 +10,9 @@
 </form>
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-
+  @for(cupcake of cupcakes; track cupcake.id){
   <li class="cupcake-item">
-    <app-cupcake></app-cupcake>
+    <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
+  }
 </ul>
