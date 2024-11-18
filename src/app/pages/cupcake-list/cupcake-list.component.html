@@ -2,19 +2,20 @@
 <form class="center">
   <label htmlFor="cupcake-select">
     Filter by
-    <select id="cupcake-select" name="cupcake-select">
+    <select id="cupcake-select" name="cupcake-select" [(ngModel)]="accessoryId"
+    (change)="filterByAccessory()">
       <option value="">---</option>
-      <!-- * Step 4: add an option for each accessory * -->
+       @for (accessory of accessories$| async ; track accessory.id) {
+        <option [value]="accessory.id">{{accessory.name}}</option>
+       }
     </select>
   </label>
 </form>
 <ul class="cupcake-list" id="cupcake-list">
-  <!-- * Step 2: repeat this block for each cupcake * -->
-  @for (cupcake of cupcakes$ | async; track $cupcake.id) {
-
+  @for (cupcake of cupcakes ; track cupcake.id) {
   <li class="cupcake-item">
-    <app-cupcake></app-cupcake>
+    <a [routerLink]="['/cupcakes/', cupcake.id]">Voir le cupcake</a>
+    <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
-}
+  }
 </ul>
-
