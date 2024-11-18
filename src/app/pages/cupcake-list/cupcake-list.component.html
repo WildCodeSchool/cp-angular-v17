@@ -2,9 +2,10 @@
 <form class="center">
   <label htmlFor="cupcake-select">
     Filter by
-    <select id="cupcake-select" name="cupcake-select">
-      @for (accessorie of accessories$ | async; track accessorie.id) {
-      <option value="accessorie">{{ accessorie.name }}</option>
+    <select id="cupcake-select" [(ngModel)]="selectedAccessoryId" (change)="onAccessoryChange()" name="cupcake-select">
+      <option value="">---</option>
+      @for (accessory of accessories$ | async; track accessory.id) {
+      <option [value]="accessory.id">{{ accessory.name }}</option>
       <!-- * Step 4: add an option for each accessory * -->
       }
     </select>
@@ -12,7 +13,7 @@
 </form>
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-  @for (cupcake of cupcakes$ | async; track cupcake.id) {
+  @for (cupcake of filteredCupcakes$ | async; track cupcake.id) {
   <li class="cupcake-item">
     <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>

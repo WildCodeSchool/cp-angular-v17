@@ -8,10 +8,9 @@ describe('CupcakeListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CupcakeListComponent]
-    })
-    .compileComponents();
-    
+      imports: [CupcakeListComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CupcakeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
