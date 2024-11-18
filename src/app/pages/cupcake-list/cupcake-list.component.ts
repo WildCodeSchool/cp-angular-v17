@@ -28,11 +28,7 @@ export class CupcakeListComponent implements OnInit {
 
     this.filteredCupcakes$ = this.cupcakes$.pipe(
       map((cupcakes) =>
-        this.selectedAccessoryId
-          ? cupcakes.filter(
-              (cupcake) => cupcake.accessory_id === this.selectedAccessoryId
-            )
-          : cupcakes
+        this.apiService.filterCupcakes(cupcakes, this.selectedAccessoryId)
       )
     );
   }
@@ -40,11 +36,7 @@ export class CupcakeListComponent implements OnInit {
   onAccessoryChange(): void {
     this.filteredCupcakes$ = this.cupcakes$.pipe(
       map((cupcakes) =>
-        this.selectedAccessoryId
-          ? cupcakes.filter(
-              (cupcake) => cupcake.accessory_id === this.selectedAccessoryId
-            )
-          : cupcakes
+        this.apiService.filterCupcakes(cupcakes, this.selectedAccessoryId)
       )
     );
   }

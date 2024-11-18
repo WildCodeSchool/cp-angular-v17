@@ -18,4 +18,12 @@ export class ApiService {
   getAccessories(): Observable<Accessories[]> {
     return this.http.get<Accessories[]>(`${this.baseApiUrl}/accessories`);
   }
+
+  filterCupcakes(cupcakes: Cupcake[], selectedAccessoryId: string): Cupcake[] {
+    return selectedAccessoryId
+      ? cupcakes.filter(
+          (cupcake) => cupcake.accessory_id === selectedAccessoryId
+        )
+      : cupcakes;
+  }
 }
