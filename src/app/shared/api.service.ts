@@ -26,4 +26,8 @@ export class ApiService {
         )
       : cupcakes;
   }
+
+  getCupcakeById(id: string): Observable<Cupcake> {
+    return this.http.get<Cupcake>(`${this.baseApiUrl}/cupcakes/${id}`);
+  }
 }
