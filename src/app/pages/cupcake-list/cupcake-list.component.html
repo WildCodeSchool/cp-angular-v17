@@ -3,8 +3,10 @@
   <label htmlFor="cupcake-select">
     Filter by
     <select id="cupcake-select" name="cupcake-select">
-      <option value="">---</option>
+      @for (accessorie of accessories$ | async; track accessorie.id) {
+      <option value="accessorie">{{ accessorie.name }}</option>
       <!-- * Step 4: add an option for each accessory * -->
+      }
     </select>
   </label>
 </form>
