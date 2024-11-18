@@ -1,0 +1,8 @@
+@if(isLoading){
+<p>Loading...</p>
+} @if(hasError){
+<p>une erreur est survenu</p>
+} @if(!isLoading && !hasError && cupcake){
+<app-cupcake [cupcake]="cupcake"></app-cupcake>
+
+}

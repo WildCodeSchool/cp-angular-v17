@@ -20,7 +20,9 @@
   <!-- * Step 2: repeat this block for each cupcake * -->
   @for(cupcake of filteredCupcakes; track cupcake.id){
   <li class="cupcake-item">
-    <app-cupcake [cupcake]="cupcake"></app-cupcake>
+    <a [routerLink]="['/cupcakes', cupcake.id]">
+      <app-cupcake [cupcake]="cupcake"></app-cupcake>
+    </a>
   </li>
   }
 </ul>

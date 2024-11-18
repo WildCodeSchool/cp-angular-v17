@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CupcakesList } from '../models/cupcake.model';
+import { Cupcake, CupcakesList } from '../models/cupcake.model';
 import { AccessoriesList } from '../models/accessorie.model';
 
 @Injectable({
@@ -20,5 +20,7 @@ export class ApiService {
     return this.http.get<AccessoriesList>(this.ACCESSORIES_API_URL);
   }
 
-  constructor() {}
+  getCupcakeById(cupcakeId: number): Observable<Cupcake> {
+    return this.http.get<Cupcake>(`${this.CUPCAKES_API_URL}/${cupcakeId}`);
+  }
 }
