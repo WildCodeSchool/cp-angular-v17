@@ -20,6 +20,6 @@ export class CupcakeComponent {
     name: '',
   };
 
-  @Input() cupcakeFromParent: any;
+  @Input() cupcakeFromParent!: Cupcake;
 
 }
