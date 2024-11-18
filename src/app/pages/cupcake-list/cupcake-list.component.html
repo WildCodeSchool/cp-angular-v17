@@ -1,15 +1,19 @@
 <h1>My cupcakes</h1>
 <form class="center">
-  @if (ApiService.accessories(); as accessories) {
-    <label htmlFor="cupcake-select">
-      Filter by
-      <select id="cupcake-select" name="cupcake-select">
-        @for (accessory of accessories; track accessory.id) {
-          <option value="">{{ accessory.name }}</option>
-        }
-      </select>
-    </label>
-  }
+  <label htmlFor="cupcake-select">
+    Filter by
+    <select
+      id="cupcake-select"
+      name="cupcake-select"
+      #accessorySelect
+      (change)="onAccessoryChange(accessorySelect.value)"
+    >
+      <option value="">No filter</option>
+      @for (accessory of accessories(); track accessory.id) {
+        <option [value]="accessory.id">{{ accessory.name }}</option>
+      }
+    </select>
+  </label>
 </form>
 @if (ApiService.cupcakes(); as cupcakes) {
   <ul class="cupcake-list" id="cupcake-list">
