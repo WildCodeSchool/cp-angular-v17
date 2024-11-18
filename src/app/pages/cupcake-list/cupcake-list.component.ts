@@ -14,11 +14,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class CupcakeListComponent {
 
-    // Create attributs in order to get datas
-    public cupcakes: Cupcake[] = [];
-    public accessories: Accessory[] =[];
-    public filteredCupcakes : Cupcake[] =[];
-
+  // Create attributs in order to get datas
+  public cupcakes: Cupcake[] = [];
+  public accessories: Accessory[] =[];
+  public filteredCupcakes : Cupcake[] =[];
 
   // Inject ApiService
   private apiService : ApiService = inject(ApiService);
