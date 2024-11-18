@@ -2,7 +2,12 @@
 <form class="center">
   <label htmlFor="cupcake-select">
     Filter by
-    <select id="cupcake-select" name="cupcake-select">
+    <select
+      id="cupcake-select"
+      name="cupcake-select"
+      [(ngModel)]="selectedAccessories"
+      (change)="accessoriesSelect()"
+    >
       <option value="">---</option>
       <!-- * Step 4: add an option for each accessory * -->
       @for (accessory of accessories$ | async; track accessory.id) {

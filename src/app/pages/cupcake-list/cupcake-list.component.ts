@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { Cupcakes } from '../../models/cupcake.model';
 import { CommonModule } from '@angular/common';
 import { Accessories } from '../../models/accessories.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent, CommonModule],
+  imports: [CupcakeComponent, CommonModule, FormsModule],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
@@ -18,6 +19,9 @@ export class CupcakeListComponent {
   // Step 1: get all cupcakes
   cupcakes$!: Observable<Cupcakes[]>;
   accessories$!: Observable<Accessories[]>;
+
+  selectedAccessories: string = '';
+  filteredCupcakes: Cupcakes[] = [];
 
   private apiService = inject(ApiService);
 
@@ -34,6 +38,8 @@ export class CupcakeListComponent {
       this.accessories$ = this.apiService.getAccessories();
     });
   }
+
+  accessoriesSelect(): void {}
 
   // Step 3: get all  accessories
 }
