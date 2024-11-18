@@ -6,7 +6,11 @@
       id="cupcake-select"
       name="cupcake-select"
     >
-      <option value="">---</option>
+    <option value="">---</option>
+    @for (accessory of accessories; track accessory.id) { 
+      <option value="accessory.name">{{accessory.name}}</option>
+    }
+      
       <!-- * Step 4: add an option for each accessory * -->
     </select>
   </label>
