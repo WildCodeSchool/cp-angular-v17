@@ -6,15 +6,18 @@
       id="cupcake-select"
       name="cupcake-select"
     >
-      <option value="">---</option>
+    <option value="">---</option>
+    @for(accessory of accessories; track accessory.id){
       <!-- * Step 4: add an option for each accessory * -->
+      <option value={{accessory.id}}>{{accessory.name}}</option>
+    }
     </select>
   </label>
 </form>
 
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-  @for (cupcake of cupcakes; track $index) {
+  @for (cupcake of cupcakes; track cupcake.id) {
   <li class="cupcake-item">
     <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
