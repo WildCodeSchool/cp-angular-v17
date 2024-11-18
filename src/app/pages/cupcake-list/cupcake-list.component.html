@@ -5,9 +5,14 @@
     <select
       id="cupcake-select"
       name="cupcake-select"
+      [(ngModel)]="accessoryId"
+      (change)="onSelectChange()"
     >
-      <option value="">---</option>
+      <option value="0">---</option>
       <!-- * Step 4: add an option for each accessory * -->
+      @for (accessory of accessories$ | async; track accessory.id) {
+        <option value="{{ accessory.id }}">{{ accessory.name }}</option>
+      }
     </select>
   </label>
 </form>
