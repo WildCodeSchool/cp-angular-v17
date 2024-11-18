@@ -13,7 +13,6 @@ export class ApiService {
 
   private apiUrl = 'http://localhost:4000/';
   private http = inject(HttpClient);
-  id!: number;
 
   // Méthode pour récupérer tous les articles
   getCupcakes(): Observable<Cupcake[]> {

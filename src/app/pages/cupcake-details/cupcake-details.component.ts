@@ -16,25 +16,18 @@ import { AsyncPipe } from '@angular/common';
 export class CupcakeDetailsComponent {
 
   cupcakeId!: number;
-  cupcake!: Cupcake ;
+  cupcake$!: Observable<Cupcake>;
   cupcakeSubscription! : Subscription;
-  route = inject(ActivatedRoute);
-  apiService! : ApiService;
+  route: ActivatedRoute = inject(ActivatedRoute);
+  private apiService : ApiService = inject(ApiService);
 
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
         this.cupcakeId = Number(params.get('id'));
-        console.log(this.cupcakeId);
-        this.cupcakeSubscription = this.apiService.getCupcakeById(this.cupcakeId).subscribe((data => {
-          this.cupcake = data;
-          })
-        );
+        this.cupcake$ = this.apiService.getCupcakeById(this.cupcakeId);
       });
     }
 
-    ngOnDestroy() {
-      this.cupcakeSubscription.unsubscribe();
-    }
 
 }
