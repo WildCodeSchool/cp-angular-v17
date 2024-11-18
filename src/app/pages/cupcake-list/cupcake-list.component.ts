@@ -25,5 +25,5 @@ export class CupcakeListComponent {
     this.cupcakes$ = this.apiService.getCupcakes();
   }
 
-  // Step 3: get all accessories
+  // Step 3: get all  accessories
 }
