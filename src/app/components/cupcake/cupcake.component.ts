@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Cupcake } from '../../models/cupcake.model';
 
 @Component({
@@ -13,11 +13,13 @@ export class CupcakeComponent {
   cupcake: Cupcake = {
     id: 0,
     accessory_id: 0,
-    url: 'http://images.innoveduc.fr/php_parcours/cp2/donut.png',
-    color1: 'var(--default-cream-color)',
-    color2: 'var(--default-cream-color)',
-    color3: 'var(--default-cream-color)',
+    url: '',
+    color1: '',
+    color2: '',
+    color3: '',
     name: '',
   };
+
+  @Input() cupcakeFromParent: any;
 
 }

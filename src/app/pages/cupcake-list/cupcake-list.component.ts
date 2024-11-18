@@ -1,17 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CupcakeComponent } from '../../components/cupcake/cupcake.component';
 import { ApiService } from '../../shared/api.service';
 import { Cupcake } from '../../models/cupcake.model';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent],
+  imports: [CupcakeComponent, CommonModule],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
-export class CupcakeListComponent {
+export class CupcakeListComponent implements OnInit {
   // Step 1: get all cupcakes
   cupcakes: Cupcake[] = [];
   cupcakeService = inject(ApiService);
