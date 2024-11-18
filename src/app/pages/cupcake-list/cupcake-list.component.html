@@ -5,16 +5,22 @@
     <select
       id="cupcake-select"
       name="cupcake-select"
+      [(ngModel)]="selectedAccesorieId"
+      (change)="filterCupcakes()"
     >
       <option value="">---</option>
       <!-- * Step 4: add an option for each accessory * -->
+       @for (accessorie of accessories; track accessorie.id){
+        <option value="">{{ accessorie.name }}</option>
+       }
     </select>
   </label>
 </form>
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-
+@for (cupcake of filteredCupcakes; track cupcake.id ){
   <li class="cupcake-item">
-    <app-cupcake></app-cupcake>
+    <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
+}
 </ul>
