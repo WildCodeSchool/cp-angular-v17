@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cupcake } from '../../models/cupcake.model';
 
 @Component({
@@ -12,5 +12,5 @@ import { Cupcake } from '../../models/cupcake.model';
 export class CupcakeComponent {
 
   @Input() cupcake!: Cupcake;
-
+  
 }
