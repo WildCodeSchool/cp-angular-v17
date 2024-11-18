@@ -5,6 +5,11 @@
     <select id="cupcake-select" name="cupcake-select">
       <option value="">---</option>
       <!-- * Step 4: add an option for each accessory * -->
+      @for (accessory of accessories$ | async; track accessory.id) {
+      <option [value]="accessory.id">{{ accessory.name }}</option>
+      } @empty {
+      <p>No accessories available.</p>
+      }
     </select>
   </label>
 </form>
@@ -21,7 +26,6 @@
 </ul>
 
 @for (accessory of accessories$ | async; track accessory.id) {
-
 <img [src]="accessory.url" alt="{{ accessory.name }}" />
 <p>{{ accessory.name }}</p>
 } @empty {
