@@ -4,26 +4,33 @@ import { Observable, Subscription } from 'rxjs';
 import { ApiService } from '../../shared/api.service';
 import { Cupcake } from '../../models/cupcake.model';
 import { Accessory } from '../../models/accessory.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent],
+  imports: [CupcakeComponent, FormsModule],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
 export class CupcakeListComponent {
   
   api : ApiService = inject(ApiService);
-  
+
   cupcakes! : Cupcake[];
   accessories! : Accessory[];
   cupcakesSubscription! : Subscription;
   accessoriesSubscription! : Subscription;
 
+  filterValue : string = '';
+  filteredCupcakes! : Cupcake[];
+
   ngOnInit() : void {
     this.cupcakesSubscription = this.getCupcakes().subscribe({
-      next: response => this.cupcakes = response,
+      next: response => {
+        this.cupcakes = response;
+        this.filterCupcakes();
+      },
       error: error => console.log(error)
     });
 
@@ -38,6 +45,12 @@ export class CupcakeListComponent {
     this.accessoriesSubscription.unsubscribe();
   }
 
+  filterCupcakes() : void {
+    this.filterValue !== ''
+      ? this.filteredCupcakes = this.cupcakes.filter(cupcake => cupcake.accessory_id === this.filterValue)
+      : this.filteredCupcakes = this.cupcakes
+  }
+
   getCupcakes() : Observable<Cupcake[]> {
     return this.api.fetchCupcakes();
   }
@@ -45,7 +58,4 @@ export class CupcakeListComponent {
   getAccessories() : Observable<Accessory[]> {
     return this.api.fetchAccessories();
   }
-
-  // Step 3: get all accessories
-
 }
