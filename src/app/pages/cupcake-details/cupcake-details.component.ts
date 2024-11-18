@@ -18,7 +18,7 @@ export class CupcakeDetailsComponent {
   cupcakeId!: number;
   cupcake$!: Observable<Cupcake>;
   cupcakeSubscription! : Subscription;
-  route: ActivatedRoute = inject(ActivatedRoute);
+  private route: ActivatedRoute = inject(ActivatedRoute);
   private apiService : ApiService = inject(ApiService);
 
 

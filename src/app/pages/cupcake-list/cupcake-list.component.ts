@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CupcakeComponent } from '../../components/cupcake/cupcake.component';
 import { Cupcake } from '../../models/cupcake.model';
 import { ApiService } from '../../shared/api.service';
@@ -20,8 +20,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
-export class CupcakeListComponent {
+export class CupcakeListComponent implements OnInit {
   cupcakes!: Cupcake[];
+  originalCupcakes!: Cupcake[];
+
   accessories$!: Observable<Accessory[]>;
   cupcakeSubscription!: Subscription;
   accessoryId: string = '';
@@ -29,21 +31,20 @@ export class CupcakeListComponent {
 
   ngOnInit() {
     this.cupcakeSubscription = this.apiService.getCupcakes().subscribe((data => {
+      this.originalCupcakes = data;
       this.cupcakes = data;
+
     }))
     this.accessories$ = this.apiService.getAccessories();
 
   }
 
   filterByAccessory() {
-    this.cupcakeSubscription = this.apiService.getCupcakes().subscribe(data => {
-      if (this.accessoryId) {
-        this.cupcakes = data.filter(cupcake => cupcake.accessory_id === this.accessoryId);    
-      } else {
-        this.cupcakes = data ;   
-      }
-    });
-
+    if (this.accessoryId) {
+      this.cupcakes = this.originalCupcakes.filter(originalCupcake => originalCupcake.accessory_id === this.accessoryId);    
+    } else {
+      this.cupcakes = this.originalCupcakes;   
+    }
   }
 
   ngOnDestroy() {
