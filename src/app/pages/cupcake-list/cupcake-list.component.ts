@@ -15,9 +15,8 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './cupcake-list.component.css',
 })
 export class CupcakeListComponent {
-  // Step 1: get all cupcakes
+
   cupcakes$!: Observable<Cupcake[]>;
-  // Step 3: get all accessories
   accessories$!: Observable<Accessory[]>;
   accessoryId: number = 0
 
@@ -36,25 +35,21 @@ export class CupcakeListComponent {
     return this.apiService.getAccessories();
   }
 
-  /*onSelectChange(){
-    const target = event.target as HTMLSelectElement;
-    this.accessoryId = Number(target.value);
-    console.log('Selected accessory ID:', this.accessoryId);
-  }*/
-
   onSelectChange() {
-    if (this.accessoryId !== 0) {
-      this.cupcakes$ = this.getAllCupcakes().pipe(
-        map(cupcakes => this.filterCupcakes(cupcakes))
-      );
-      console.log('Selected accessory ID:', this.accessoryId);
-      console.log('Cupcakes:', this.cupcakes$);
-    } else{
-      this.cupcakes$ = this.getAllCupcakes();
-    }
+    this.cupcakes$ = this.getAllCupcakes().pipe(
+      map(cupcakes => {
+        console.log('Cupcakes avant filtre:', cupcakes);
+        return  this.filterCupcakes(cupcakes);
+      })
+    );
+    console.log('Selected accessory ID:', this.accessoryId);
+    console.log('Cupcakes:', this.cupcakes$);
   }
 
   filterCupcakes(cupcakes: Cupcake[]): Cupcake[] {
+    if (this.accessoryId === 0) {
+      return cupcakes;
+    }
     return cupcakes.filter(cupcake => cupcake.accessory_id === this.accessoryId);
   }
 }
