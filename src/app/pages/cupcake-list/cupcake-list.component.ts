@@ -3,7 +3,7 @@ import { CupcakeComponent } from '../../components/cupcake/cupcake.component';
 import { HttpClient } from '@angular/common/http';
 import { Cupcake } from '../../models/cupcake.model';
 import { ApiService } from '../../shared/api.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Accessory } from '../../models/accessory.model';
@@ -20,6 +20,8 @@ export class CupcakeListComponent {
     http: HttpClient = inject(HttpClient);
     services = inject(ApiService);
 
+    cupcakeSubscription!: Subscription;
+
     cakes: Cupcake[] = [];
 
     cupcakes: Cupcake[] = [];
@@ -30,13 +32,19 @@ export class CupcakeListComponent {
     // Step 1: get all cupcakes
 
     ngOnInit() {
-        this.services.getCupcakes().subscribe((data) => {
-            this.cakes = data;
-            this.cupcakes = this.cakes;
-        });
+        this.cupcakeSubscription = this.services
+            .getCupcakes()
+            .subscribe((data) => {
+                this.cakes = data;
+                this.cupcakes = this.cakes;
+            });
         this.services.getCupcakesAccessories().subscribe((data) => {
             this.accessories = data;
         });
+    }
+
+    ngOnDestroy() {
+        this.cupcakeSubscription.unsubscribe();
     }
 
     getCupcakesoutOfAccessory() {
