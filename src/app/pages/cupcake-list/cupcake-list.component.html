@@ -1,14 +1,16 @@
 <h1>My cupcakes</h1>
-<form class="center">
+<form  class="center" >
   <label htmlFor="cupcake-select">
     Filter by
     <select
       id="cupcake-select"
       name="cupcake-select"
+      [(ngModel)]="accessoryFilter"
+      (change)="cupcakesfilter()"
     >
     <option value="">---</option>
     @for (accessory of accessories; track accessory.id) { 
-      <option value="accessory.name">{{accessory.name}}</option>
+      <option [value]="accessory.id" >{{accessory.name}}</option>
     }
       
       <!-- * Step 4: add an option for each accessory * -->
@@ -20,8 +22,11 @@
 
   <li class="cupcake-item">
     @for (cupcake of cupcakes;track cupcake.id) {
-      @if (cupcake) {
+      @if (cupcake.accessory_id === accessoryFilter) {
     <app-cupcake [cupcake]="cupcake"></app-cupcake>
+      }
+      @if(accessoryFilter===""){
+        <app-cupcake [cupcake]="cupcake"></app-cupcake>
       }
     } @empty {
     <p>Pas de pâtisserie aujourd'hui!</p>

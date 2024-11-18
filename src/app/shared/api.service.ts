@@ -9,8 +9,8 @@ import { Accessory } from '../models/accessory.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:4000'
-  constructor(private http: HttpClient) { }
+  private baseUrl = 'http://localhost:4000';
+  constructor(private http: HttpClient) { };
 
   getCupCakes():Observable<any>{
     return this.http.get(`${this.baseUrl}/cupcakes`)
