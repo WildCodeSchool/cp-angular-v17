@@ -1,13 +1,21 @@
 <h1>My cupcakes</h1>
-<form class="center">
+<form class="center" #accessoryForm="ngForm">
   <label htmlFor="cupcake-select">
     Filter by
     <select
       id="cupcake-select"
       name="cupcake-select"
+      [(ngModel)] = "selectedAccessory"  
     >
-      <option value="">---</option>
+    <!-- Mon code ne fonctionne pas depuis l'ajout de la méthode, 
+    (change)="onAccessoryChange";-->
+      <option value=""> --- </option>
       <!-- * Step 4: add an option for each accessory * -->
+       @for (accessory of accessories ; track accessory.id) {
+        @if (accessory) {
+          <option value="{{ accessory.id }}"> {{ accessory.name }} </option>
+        }
+       }
     </select>
   </label>
 </form>

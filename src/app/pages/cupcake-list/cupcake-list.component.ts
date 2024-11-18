@@ -5,11 +5,12 @@ import { Cupcake } from '../../models/cupcake.model';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Accessory } from '../../models/accessory.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent, CommonModule],
+  imports: [CupcakeComponent, CommonModule, FormsModule],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
@@ -19,9 +20,23 @@ export class CupcakeListComponent implements OnInit {
   cupcakeService = inject(ApiService);
   cupcakeSubscription!: Subscription;
 
-    // Step 3: get all accessories
-    accessories: Accessory[] = [];
-    accessorySubscription!: Subscription;
+  // Step 3: get all accessories
+  accessories: Accessory[] = [];
+  accessorySubscription!: Subscription;
+
+  //Step 5 : Filter cupcakes by accessories 
+  selectedAccessory: string = "";
+  filteredCupcakes: Cupcake[] = [];
+  /*
+  onAccessoryChange() {
+    if(!this.selectedAccessory) {
+      this.filteredCupcakes = this.cupcakes;
+    } else {
+      this.filteredCupcakes = this.cupcakes.filter(cupcake =>
+        cupcake.accessory_id.toString() === this.selectedAccessory
+      );
+    }
+  }*/
 
   ngOnInit() {
     this.cupcakeSubscription = this.cupcakeService.getAllCupcakes().subscribe({
