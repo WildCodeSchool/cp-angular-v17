@@ -5,17 +5,18 @@ import { ApiService } from '../../shared/api.service';
 import { Cupcake } from '../../models/cupcake.model';
 import { Accessory } from '../../models/accessory.model';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cupcake-list',
   standalone: true,
-  imports: [CupcakeComponent, FormsModule],
+  imports: [CupcakeComponent, FormsModule, RouterLink],
   templateUrl: './cupcake-list.component.html',
   styleUrl: './cupcake-list.component.css',
 })
 export class CupcakeListComponent {
   
-  api : ApiService = inject(ApiService);
+  private api : ApiService = inject(ApiService);
 
   cupcakes! : Cupcake[];
   accessories! : Accessory[];

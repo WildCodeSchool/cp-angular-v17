@@ -18,4 +18,8 @@ export class ApiService {
   fetchAccessories() : Observable<Accessory[]> {
     return this.http.get<Accessory[]>(this.apiUrl + '/accessories');
   }
+
+  fetchCupcakeById(id : number | string) : Observable<Cupcake> {
+    return this.http.get<Cupcake>(this.apiUrl + /cupcakes/ + id);
+  }
 }

@@ -22,9 +22,11 @@
   <!-- * Step 2: repeat this block for each cupcake * -->
   @if (cupcakes) {
     @for (cupcake of filteredCupcakes; track cupcake.id) {
-      <li class="cupcake-item">
-        <app-cupcake [cupcake]="cupcake"></app-cupcake>
-      </li>
+      <a [routerLink]="['/cupcake', cupcake.id]">
+        <li class="cupcake-item">
+          <app-cupcake [cupcake]="cupcake"></app-cupcake>
+        </li>
+      </a>
     } @empty {
       <div>No cupcakes today, sorry !</div>
     }
