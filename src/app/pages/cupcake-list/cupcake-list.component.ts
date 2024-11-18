@@ -6,6 +6,7 @@ import { map, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Accessories } from '../../models/accessories.model';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cupcake-list',
