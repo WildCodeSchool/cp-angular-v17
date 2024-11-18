@@ -13,14 +13,12 @@ import { Cupcakes } from '../../models/cupcake.model';
 export class CupcakeListComponent {
   // Step 1: get all cupcakes
   // Array of cupcakes
-  private cupcakes: Cupcakes[] = [];
+  public cupcakes: Cupcakes[] = [];
 
   // Inject ApiService
   private apiService : ApiService = inject(ApiService);
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.apiService.getCupcakes().subscribe(response =>{
       console.log(response)
       this.cupcakes = response

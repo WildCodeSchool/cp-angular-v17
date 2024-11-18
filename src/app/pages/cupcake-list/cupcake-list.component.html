@@ -11,10 +11,12 @@
     </select>
   </label>
 </form>
+
 <ul class="cupcake-list" id="cupcake-list">
   <!-- * Step 2: repeat this block for each cupcake * -->
-
+  @for (cupcake of cupcakes; track $index) {
   <li class="cupcake-item">
-    <app-cupcake></app-cupcake>
+    <app-cupcake [cupcake]="cupcake"></app-cupcake>
   </li>
+  }
 </ul>

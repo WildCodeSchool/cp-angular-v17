@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cupcake',
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './cupcake.component.css'
 })
 export class CupcakeComponent {
-  cupcake: any = {
+  @Input() cupcake: any = {
     url: 'http://images.innoveduc.fr/php_parcours/cp2/donut.png',
     color1: 'var(--default-cream-color)',
     color2: 'var(--default-cream-color)',
