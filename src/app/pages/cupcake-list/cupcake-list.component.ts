@@ -4,6 +4,7 @@ import { ApiService } from '../../shared/api.service';
 import { Cupcake } from '../../models/cupcake.model';
 import { Accessory } from '../../models/accessories.model';
 import { FormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cupcake-list',
@@ -18,6 +19,8 @@ export class CupcakeListComponent {
   public cupcakes: Cupcake[] = [];
   public accessories: Accessory[] =[];
   public filteredCupcakes : Cupcake[] =[];
+  cupcakesSuscription!: Subscription;
+  accessoriesSuscription!: Subscription;
 
   // Inject ApiService
   private apiService : ApiService = inject(ApiService);
@@ -25,15 +28,22 @@ export class CupcakeListComponent {
   // Get Cupcakes and accessories on init
   ngOnInit(): void {
     // Step 1: get all cupcakes
-    this.apiService.getCupcakes().subscribe(cupcake =>{
+    this.cupcakesSuscription = this.apiService.getCupcakes().subscribe(cupcake =>{
       this.cupcakes = cupcake;
       this.filteredCupcakes = this.cupcakes;
     })
 
     // Step 3: get all accessories
-    this.apiService.getAccessories().subscribe(accessory =>{
+    this.accessoriesSuscription = this.apiService.getAccessories().subscribe(accessory =>{
       this.accessories = accessory;
     })    
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.cupcakesSuscription.unsubscribe();
+    this.accessoriesSuscription.unsubscribe();
   }
 
   // Step 5 : Filter the list by accessory

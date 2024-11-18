@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { CupcakeComponent } from "../../components/cupcake/cupcake.component";
 import { ActivatedRoute, ActivationEnd, ParamMap } from '@angular/router';
 import { Cupcake } from '../../models/cupcake.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cupcake-details',
@@ -19,6 +20,8 @@ export class CupcakeDetailsComponent {
   public cupcake!: Cupcake;
   public isDetailPage: boolean = true;
 
+  cupcakeSuscription!: Subscription;
+
   ngOnInit(): void {
     // Get the cupcake Id from the url 
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -28,7 +31,12 @@ export class CupcakeDetailsComponent {
       console.log(response);
       this.cupcake = response;
     })
-    
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.cupcakeSuscription.unsubscribe();
   }
 
 }
